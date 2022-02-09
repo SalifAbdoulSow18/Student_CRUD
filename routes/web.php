@@ -19,3 +19,7 @@ Route::get('/', function () {
 })->name('accueil');
 
 Route::get('/etudiant', [EtudiantController::class, "index"])->name('etudiant');
+Route::get('/etudiant/create', [EtudiantController::class, "create"])->name('etudiant.create');
+Route::post('/etudiant/create', [EtudiantController::class, "ajouter"])->name('etudiant.ajouter');
+
+
