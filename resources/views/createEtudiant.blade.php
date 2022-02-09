@@ -6,7 +6,12 @@
     <h3 class="border-bottom pb-2 mb-4">Ajout d'un nouveau etudiant</h3>
     
     <div class="mt-4">
-        
+        @if(session()->has('success'))
+        <div class="alert alert-success">
+            {{session()->get('success')}}
+        </div>    
+            
+        @endif
             
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -23,15 +28,15 @@
             @csrf
             <div class="mb-3">
                 <label class="form-label">Nom</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="nom" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Prenom</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="prenom" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Classe</label>
-                <select class="form-control">
+                <select class="form-control" name="classe_id" required>
                     <option value="">Affecter lui une classe</option>
                     @foreach ($classes as $classe)
                         <option value="{{ $classe->id }}"> {{ $classe->libelle }} </option>
